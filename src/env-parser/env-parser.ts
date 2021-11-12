@@ -12,8 +12,8 @@ import type {
   UserIndeterminate,
   Source,
   BalanceOptional,
-} from "./types";
-import { TwoLevelMap } from "./two-level-map";
+} from "../types";
+import { TwoLevelMap } from "../two-level-map";
 
 /**
  * Parses account information as 2 tiered data

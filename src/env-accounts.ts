@@ -1,4 +1,4 @@
-import { EnvParser } from './env-parser';
+import { EnvParser } from "_/env-parser/env-parser";
 import type {
   GroupIndeterminate,
   GroupLower,
@@ -8,9 +8,9 @@ import type {
   BalanceOptional,
   NetworkLower,
   NetworkIndeterminate,
-} from './types';
-import { EnvPrefix } from './env-prefix';
-import { RequiredAccounts } from './required-accounts';
+} from "./types";
+import { EnvPrefix } from "_/env-prefix/env-prefix";
+import { RequiredAccounts } from "./required-accounts";
 
 /**
  * Provides consumer with different ways of querying account related
@@ -21,7 +21,7 @@ export class EnvAccounts {
   private readonly envPrefix = new EnvPrefix();
   private readonly parser: EnvParser;
   private networkAliases = new Map<string, NetworkLower[]>();
-  private defaultBalance = '1' + '0'.repeat(18); // 1 Ether
+  private defaultBalance = "1" + "0".repeat(18); // 1 Ether
 
   /**
    * Instantiates the class
@@ -205,7 +205,7 @@ export class EnvAccounts {
       const data = this.parser.getGroupMap().getData(groupLower, userLower);
       let single = data[prop];
       if (single === undefined) {
-        if (prop === 'balance') {
+        if (prop === "balance") {
           single = this.getDefaultBalance() as BalanceOptional;
         }
       }
