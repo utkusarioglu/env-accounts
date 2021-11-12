@@ -8,12 +8,12 @@ on:
       - main
 
 jobs:
-  strategy:
-    matrix:
-      node_version: [15.x, 16.x]
   setup:
     name: Setup
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [15.x, 16.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2.1.1
