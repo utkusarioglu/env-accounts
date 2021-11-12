@@ -8,8 +8,8 @@ on:
       - main
 
 jobs:
-  setup:
-    name: Setup
+  test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,11 +24,5 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install dependencies
         run: yarn
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: setup
-    steps:
       - name: Run tests
         run: yarn test
