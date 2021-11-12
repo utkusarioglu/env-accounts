@@ -13,8 +13,8 @@ jobs:
           node-version: 16.x
           registry-url: https://registry.npmjs.org
       - run: yarn
-      - run: yarn build
       - run: yarn test-ci
+      - run: yarn build
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_CI_AUTH_TOKEN }}
