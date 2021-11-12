@@ -1,3 +1,4 @@
+import errors from "_/__errors";
 /**
  * Holds the prefix string used in EnvAccounts class.
  */
@@ -10,6 +11,9 @@ export class EnvPrefix {
    * @returns this
    */
   public set(envPrefix: string): this {
+    if (!envPrefix.length) {
+      throw new Error(errors.NO_EMPTY_STRING);
+    }
     this.envPrefix = envPrefix;
     return this;
   }
@@ -21,7 +25,7 @@ export class EnvPrefix {
    */
   public get(): string | never {
     if (!this.envPrefix) {
-      throw new Error("EnvPrefix hasn't been set");
+      throw new Error(errors.NO_GET_WITHOUT_SET);
     }
     return this.envPrefix;
   }
