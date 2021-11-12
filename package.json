@@ -3,6 +3,7 @@
   "version": "1.0.5",
   "description": "Pull ethereum account info from .env",
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "repository": "https://github.com/utkusarioglu/env-accounts.git",
   "author": "Utku Sarioglu <utkusarioglu@hotmail.com>",
   "license": "MIT",
