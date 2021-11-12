@@ -14,6 +14,7 @@ import type {
   BalanceOptional,
 } from "../types";
 import { TwoLevelMap } from "../two-level-map";
+import { isObject } from "_/__tools";
 
 /**
  * Parses account information as 2 tiered data
@@ -42,7 +43,7 @@ import { TwoLevelMap } from "../two-level-map";
  */
 export class EnvParser {
   private raw: Raw = new Map<EnvAccountNameShortened, EnvAccountValue>();
-  private source: Source;
+  private source!: Source;
   private parsed = false;
   private readonly groupUserProps = new TwoLevelMap<
     GroupLower,
@@ -60,8 +61,17 @@ export class EnvParser {
    * @param source default source is `process.env`. But you can set any other
    * data source you prefer as long as it has the same shape as .env
    */
-  constructor(source: Source = process.env) {
-    this.source = source;
+  constructor(source: Parameters<EnvParser["setSource"]>[0] = process.env) {
+    this.setSource(source);
+  }
+
+  /**
+   * Returns the source object that is used in parse operation.
+   * If a different source is not specified, the return will be `process.env`
+   * @returns unaltered source object
+   */
+  public getSource(): Source {
+    return this.source;
   }
 
   /**
@@ -166,6 +176,17 @@ export class EnvParser {
     if (!this.parsed) {
       throw new Error("call before parsed");
     }
+  }
+
+  /**
+   * Sets the source for the parsing operation
+   * @param source source entity to use
+   */
+  private setSource(source: Source = process.env) {
+    if (!isObject(source)) {
+      throw new Error(errors.SOURCE_SHALL_BE_OBJECT);
+    }
+    this.source = source;
   }
 
   /**
