@@ -15,6 +15,7 @@ import type {
 } from "../types";
 import { TwoLevelMap } from "../two-level-map";
 import { isObject } from "_/__tools";
+import errors from "_/__errors";
 
 /**
  * Parses account information as 2 tiered data
@@ -121,7 +122,7 @@ export class EnvParser {
    * @returns map object populated with source data that fit the prefix check
    */
   public getRaw(): Raw {
-    assert(!!this.raw, "Cannot call before parse");
+    assert(!!this.raw, errors.NO_CALL_BEFORE_PARSE);
     return this.raw;
   }
 
@@ -133,7 +134,7 @@ export class EnvParser {
    * @returns nested map object that has group name as level one
    */
   public getGroupMap(): TwoLevelMap<GroupLower, UserLower, AccountProps> {
-    assert(!!this.raw, "cannot call before parse");
+    assert(!!this.raw, errors.NO_CALL_BEFORE_PARSE);
     return this.groupUserProps;
   }
 
@@ -145,7 +146,7 @@ export class EnvParser {
    * @returns a nested map object that has the user name as level one
    */
   public getUserMap(): TwoLevelMap<UserLower, GroupLower, AccountProps> {
-    assert(!!this.raw, "cannot call before parse");
+    assert(!!this.raw, errors.NO_CALL_BEFORE_PARSE);
     return this.userGroupProps;
   }
 
@@ -176,7 +177,7 @@ export class EnvParser {
    */
   public checkIfParsed(): void | never {
     if (!this.parsed) {
-      throw new Error("call before parsed");
+      throw new Error(errors.NO_CALL_BEFORE_PARSE);
     }
   }
 
