@@ -1,0 +1,22 @@
+{
+  "name": "env-accounts",
+  "version": "1.0.0",
+  "description": "Pull ethereum account info from .env",
+  "main": "lib/index.js",
+  "repository": "https://github.com/utkusarioglu/env-accounts.git",
+  "author": "Utku Sarioglu <utkusarioglu@hotmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"this hasn't been implemented yet\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "brands-and-flavors": "^1.0.1",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  }
+}
