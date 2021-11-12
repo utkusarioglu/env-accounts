@@ -8,9 +8,9 @@ import type {
   BalanceOptional,
   NetworkLower,
   NetworkIndeterminate,
-} from "./types";
+} from "_/types";
 import { EnvPrefix } from "_/env-prefix/env-prefix";
-import { RequiredAccounts } from "./required-accounts";
+import { RequiredAccounts } from "_/required-accounts";
 
 /**
  * Provides consumer with different ways of querying account related
