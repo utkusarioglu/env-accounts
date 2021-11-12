@@ -1,0 +1,34 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      - main
+
+jobs:
+  strategy:
+    matrix:
+      node_version: [15.x, 16.x]
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.1.1
+      - name: Set up NodeJS ${{matrix.node_version}}
+        uses: actions/setup-node@v1.42
+        with:
+          node-version: ${{matrix.node_version}}
+          registry-url: https://registry.npmjs.org
+      - name: Install dependencies
+        run: yarn
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Run tests
+        run: yarn test
