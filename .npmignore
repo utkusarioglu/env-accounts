@@ -1,0 +1,7 @@
+*.tsbuildinfo
+.devcontainer
+.github
+.vscode
+docker*
+Docker*
+*.log
