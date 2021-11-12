@@ -1,6 +1,6 @@
 {
   "name": "env-accounts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Pull ethereum account info from .env",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
