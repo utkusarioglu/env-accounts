@@ -15,6 +15,7 @@ jobs:
       - run: yarn
       - run: yarn test-ci
       - run: yarn build
+      - run: yarn version
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_CI_AUTH_TOKEN }}
