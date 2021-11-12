@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  env-accounts:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: env-accounts
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
