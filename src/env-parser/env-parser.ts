@@ -45,6 +45,8 @@ export class EnvParser {
   private raw: Raw = new Map<EnvAccountNameShortened, EnvAccountValue>();
   private source!: Source;
   private parsed = false;
+  private separator = "_";
+  private divider = ":";
   private readonly groupUserProps = new TwoLevelMap<
     GroupLower,
     UserLower,
@@ -214,8 +216,11 @@ export class EnvParser {
    */
   private parseMaps(): void {
     this.getRaw().forEach((value, key) => {
-      const [group, user] = EnvParser.parseEnvAccountNameShortened(key);
-      const props = EnvParser.parseEnvAccountValue(value);
+      const [group, user] = EnvParser.parseEnvAccountNameShortened(
+        key,
+        this.separator
+      );
+      const props = EnvParser.parseEnvAccountValue(value, this.divider);
       this.userGroupProps.addOne(user, group, props);
       this.groupUserProps.addOne(group, user, props);
     });
@@ -229,9 +234,9 @@ export class EnvParser {
    * @returns group and user lowercase strings as a tuple
    */
   private static parseEnvAccountNameShortened(
-    envAccountName: EnvAccountNameShortened
+    envAccountName: EnvAccountNameShortened,
+    separator: string
   ): [GroupLower, UserLower] {
-    const separator = "_";
     const [group, user] = envAccountName.toLowerCase().split(separator) as [
       GroupLower,
       UserLower
@@ -244,8 +249,10 @@ export class EnvParser {
    * @param value environment variable value
    * @returns privateKey, address, balance as an object
    */
-  private static parseEnvAccountValue(value: EnvAccountValue): AccountProps {
-    const divider = ":";
+  private static parseEnvAccountValue(
+    value: EnvAccountValue,
+    divider: string
+  ): AccountProps {
     const [address, privateKey, balance] = value.split(divider) as [
       Address,
       PrivateKey,
