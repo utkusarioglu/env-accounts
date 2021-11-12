@@ -2,7 +2,7 @@
   "name": "Existing Docker Compose (Extend)",
   "dockerComposeFile": ["../docker-compose.dev.yml", "docker-compose.yml"],
   "service": "env-accounts",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/usr/src/app",
   "settings": {
     "workbench.colorCustomizations": {
       "activityBar.background": "#740"
