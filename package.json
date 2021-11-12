@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "test": "jest",
     "test-ci": "jest --ci"
   },
@@ -20,6 +20,7 @@
     "jest": "^27.3.1",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
+    "tsc-alias": "^1.4.0",
     "typescript": "^4.4.4"
   },
   "dependencies": {
