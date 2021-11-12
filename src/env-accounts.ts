@@ -251,7 +251,7 @@ export class EnvAccounts {
    * @param dataCb a callback for picking particular account props by default,
    * the method will return every prop
    * @returns picked account props
-   * @internal
+   * @dev
    * The doc string for this method is very similar with the string for
    * `getNetworkUserProps`. Please reflect any relevant change in this doc
    * in that the other method as well.
@@ -311,7 +311,7 @@ export class EnvAccounts {
    * @param dataCb a callback for picking particular account props by default,
    * the method will return every prop
    * @returns picked account props
-   * @internal
+   * @dev
    * The doc string for this method is very similar with the string for
    * `getUserNetworkProps`. Please reflect any relevant change in this doc
    * in that the other method as well.
